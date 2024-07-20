@@ -635,15 +635,25 @@ require('lazy').setup({
     ft = { 'markdown' },
   },
 
+  -- Colorschemes
   {
     'savq/melange-nvim',
-    priority = 1000, -- Make sure to load this before all the other start plugins.
-    init = function()
-      vim.cmd.colorscheme 'melange'
+    --priority = 1000,
+    --init = function()
+    -- vim.cmd.colorscheme 'melange'
+    --end,
+  },
 
-      -- You can configure highlights by doing something like:
-      vim.cmd.hi 'Comment gui=none'
-    end,
+  {
+    'blazkowolf/gruber-darker.nvim',
+  },
+
+  {
+    'xero/miasma.nvim',
+  },
+
+  {
+    'Verf/deepwhite.nvim',
   },
 
   -- Highlight todo, notes, etc in comments
