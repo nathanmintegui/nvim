@@ -22,7 +22,7 @@ vim.opt.tabstop = 4
 
 vim.opt.shell = 'bash'
 
-vim.opt.colorcolumn = '80,120'
+vim.opt.colorcolumn = '80'
 
 vim.opt.mouse = 'a'
 
@@ -33,7 +33,7 @@ vim.opt.showmode = false
 vim.opt.clipboard = 'unnamedplus'
 
 -- Enable break indent
-vim.opt.breakindent = true
+vim.opt.breakindent = false
 
 -- Save undo history
 vim.opt.undofile = true
@@ -66,7 +66,7 @@ vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣', eol = '⏎' }
 vim.opt.inccommand = 'split'
 
 -- Show which line your cursor is on
-vim.opt.cursorline = true
+vim.opt.cursorline = false
 
 -- Minimal number of screen lines to keep above and below the cursor.
 vim.opt.scrolloff = 10
@@ -658,8 +658,12 @@ require('lazy').setup({
     'Verf/deepwhite.nvim',
   },
 
+  {
+    'rose-pine/neovim',
+  },
+
   -- Highlight todo, notes, etc in comments
-  { 'folke/todo-comments.nvim', event = 'VimEnter', dependencies = { 'nvim-lua/plenary.nvim' }, opts = { signs = false } },
+  --{ 'folke/todo-comments.nvim', event = 'VimEnter', dependencies = { 'nvim-lua/plenary.nvim' }, opts = { signs = false } },
 
   { -- Collection of various small independent plugins/modules
     'echasnovski/mini.nvim',
@@ -762,3 +766,8 @@ require('lazy').setup({
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
+--
+--
+vim.g.netrw_browse_split = 0
+vim.g.netrw_banner = 0
+vim.g.netrw_winsize = 25
