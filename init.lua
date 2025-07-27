@@ -15,10 +15,14 @@ vim.g.have_nerd_font = true
 vim.opt.number = true
 vim.opt.relativenumber = true
 
+vim.opt.guicursor = 'n-v-c-i:block-Cursor'
+
 vim.opt.expandtab = true
 vim.opt.smarttab = true
 vim.opt.shiftwidth = 4
 vim.opt.tabstop = 4
+
+vim.opt.swapfile = false
 
 vim.opt.shell = 'bash'
 
@@ -27,7 +31,7 @@ vim.opt.colorcolumn = '80'
 vim.opt.mouse = 'a'
 
 -- Don't show the mode, since it's already in the status line
-vim.opt.showmode = false
+vim.opt.showmode = true
 
 -- Sync clipboard between OS and Neovim.
 vim.opt.clipboard = 'unnamedplus'
@@ -66,7 +70,7 @@ vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣', eol = '⏎' }
 vim.opt.inccommand = 'split'
 
 -- Show which line your cursor is on
-vim.opt.cursorline = false
+vim.opt.cursorline = true
 
 -- Minimal number of screen lines to keep above and below the cursor.
 vim.opt.scrolloff = 10
@@ -157,28 +161,6 @@ require('lazy').setup({
     },
   },
   {
-    'folke/which-key.nvim',
-    event = 'VimEnter', -- Sets the loading event to 'VimEnter'
-    config = function() -- This is the function that runs, AFTER loading
-      require('which-key').setup()
-
-      -- Document existing key chains
-      require('which-key').register {
-        ['<leader>c'] = { name = '[C]ode', _ = 'which_key_ignore' },
-        ['<leader>d'] = { name = '[D]ocument', _ = 'which_key_ignore' },
-        ['<leader>r'] = { name = '[R]ename', _ = 'which_key_ignore' },
-        ['<leader>s'] = { name = '[S]earch', _ = 'which_key_ignore' },
-        ['<leader>w'] = { name = '[W]orkspace', _ = 'which_key_ignore' },
-        ['<leader>t'] = { name = '[T]oggle', _ = 'which_key_ignore' },
-        ['<leader>h'] = { name = 'Git [H]unk', _ = 'which_key_ignore' },
-      }
-      -- visual mode
-      require('which-key').register({
-        ['<leader>h'] = { 'Git [H]unk' },
-      }, { mode = 'v' })
-    end,
-  },
-  {
     'nvim-telescope/telescope.nvim',
     event = 'VimEnter',
     branch = '0.1.x',
@@ -225,15 +207,9 @@ require('lazy').setup({
       -- [[ Configure Telescope ]]
       -- See `:help telescope` and `:help telescope.setup()`
       require('telescope').setup {
-        -- You can put your default mappings / updates / etc. in here
-        --  All the info you're looking for is in `:help telescope.setup()`
-        --
-        -- defaults = {
-        --   mappings = {
-        --     i = { ['<c-enter>'] = 'to_fuzzy_refine' },
-        --   },
-        -- },
-        -- pickers = {}
+        defaults = {
+          file_ignore_patterns = { 'node_modules*' },
+        },
         extensions = {
           ['ui-select'] = {
             require('telescope.themes').get_dropdown(),
@@ -639,27 +615,15 @@ require('lazy').setup({
 
   -- Colorschemes
   {
-    'savq/melange-nvim',
-    --priority = 1000,
-    --init = function()
-    -- vim.cmd.colorscheme 'melange'
-    --end,
+    'ficcdaf/ashen.nvim',
   },
 
   {
-    'blazkowolf/gruber-darker.nvim',
-  },
-
-  {
-    'xero/miasma.nvim',
-  },
-
-  {
-    'Verf/deepwhite.nvim',
-  },
-
-  {
-    'rose-pine/neovim',
+    'projekt0n/github-nvim-theme',
+    priority = 1000,
+    init = function()
+      vim.cmd.colorscheme 'github_light'
+    end,
   },
 
   -- Highlight todo, notes, etc in comments
